@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Persistence\DatabaseClients\MongoDb;
+namespace Comquer\Persistence\DatabaseClient\MongoDb;
 
-use Comquer\Persistence\DatabaseClient\MongoDb\Client;
-use Comquer\Persistence\DatabaseClientFactory;
+use Comquer\Persistence\DatabaseClient\DatabaseClientFactory;
 use MongoDB\Client as NativeClient;
 
 class ClientFactory implements DatabaseClientFactory

@@ -2,7 +2,7 @@
 
 namespace Comquer\Persistence\DatabaseClient\MongoDb;
 
-use Comquer\Persistence\DatabaseClient;
+use Comquer\Persistence\DatabaseClient\DatabaseClient;
 use MongoDB\Client as NativeClient;
 use MongoDB\Driver\Command;
 
