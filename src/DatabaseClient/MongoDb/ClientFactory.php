@@ -11,7 +11,7 @@ class ClientFactory implements DatabaseClientFactory
     {
         return new Client(
             $databaseName,
-            new NativeClient("mongodb://$username:$password@$host:$port")
+            new NativeClient("mongodb://$host:$port")
         );
     }
 }
