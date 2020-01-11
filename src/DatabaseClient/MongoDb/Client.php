@@ -3,9 +3,8 @@
 namespace Comquer\Persistence\DatabaseClient\MongoDb;
 
 use Comquer\Persistence\DatabaseClient;
-use MongoDB\Collection;
-use MongoDB\Driver\Command;
 use MongoDB\Client as NativeClient;
+use MongoDB\Driver\Command;
 
 class Client implements DatabaseClient
 {
@@ -17,6 +16,21 @@ class Client implements DatabaseClient
     {
         $this->databaseName = $databaseName;
         $this->nativeClient = $nativeClient;
+    }
+
+    public function persist(string $collectionName, array $document) : void
+    {
+        $this->nativeClient
+            ->selectCollection($this->databaseName, $collectionName)
+            ->insertOne($document);
+    }
+
+    public function getByQuery(string $collectionName, array $query) : array
+    {
+        return $this->nativeClient
+            ->selectCollection($this->databaseName, $collectionName)
+            ->find($query)
+            ->toArray();
     }
 
     public function upsert(string $collectionName, array $query, array $document) : void
@@ -39,10 +53,5 @@ class Client implements DatabaseClient
     public function dropDatabase(): void
     {
         $this->nativeClient->dropDatabase($this->databaseName);
-    }
-
-    private function selectCollection(string $collectionName) : Collection
-    {
-        return $this->nativeClient->selectCollection($this->databaseName, $collectionName);
     }
 }
