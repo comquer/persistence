@@ -2,11 +2,27 @@
 
 namespace Comquer\PersistenceTest\DatabaseClient\MongoDb;
 
+use Comquer\Persistence\DatabaseClient\MongoDb\Client;
 use Comquer\Persistence\DatabaseClient\MongoDb\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
+    private Client $client;
+
+    public function setUp() : void
+    {
+        $this->client = ClientFactory::create(
+            'localhost',
+            27017,
+            'test_mongo_db',
+            'user',
+            'password',
+        );
+
+        parent::setUp();
+    }
+
     /** @test */
     function persist_and_get_multiple_documents()
     {
@@ -16,18 +32,10 @@ class ClientTest extends TestCase
             'number' => 7,
         ];
 
-        $client = ClientFactory::create(
-            'localhost',
-            27017,
-            'user',
-            'password',
-            'test_mongo_db'
-        );
+        $this->client->persist('test collection', $document);
+        $this->client->persist('test collection', $document);
 
-        $client->persist('test collection', $document);
-        $client->persist('test collection', $document);
-
-        $documents = $client->getByQuery('test collection', []);
+        $documents = $this->client->getByQuery('test collection', []);
 
         self::assertCount(2, $documents);
     }
