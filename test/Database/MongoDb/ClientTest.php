@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\PersistenceTest\DatabaseClient\MongoDb;
+namespace Comquer\PersistenceTest\Database\MongoDb;
 
-use Comquer\Persistence\DatabaseClient\MongoDb\Client;
-use Comquer\Persistence\DatabaseClient\MongoDb\ClientFactory;
+use Comquer\Persistence\Database\MongoDb\Client;
+use Comquer\Persistence\Database\MongoDb\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase

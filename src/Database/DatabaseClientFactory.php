@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Persistence\DatabaseClient;
+namespace Comquer\Persistence\Database;
 
 interface DatabaseClientFactory
 {

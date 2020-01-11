@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Persistence\DatabaseClient\MongoDb;
+namespace Comquer\Persistence\Database\MongoDb;
 
-use Comquer\Persistence\DatabaseClient\DatabaseClient;
+use Comquer\Persistence\Database\DatabaseClient;
 use MongoDB\Client as NativeClient;
 use MongoDB\Driver\Command;
 use MongoDB\Model\BSONDocument;
