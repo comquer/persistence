@@ -4,7 +4,7 @@ namespace Comquer\Persistence\DatabaseClient;
 
 interface DatabaseClient
 {
-    public function persist(string $collectionName, array $document);
+    public function persist(string $collectionName, array $document) : void;
 
     public function getByQuery(string $collectionName, array $query) : array;
 

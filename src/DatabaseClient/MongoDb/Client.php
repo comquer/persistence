@@ -5,6 +5,7 @@ namespace Comquer\Persistence\DatabaseClient\MongoDb;
 use Comquer\Persistence\DatabaseClient\DatabaseClient;
 use MongoDB\Client as NativeClient;
 use MongoDB\Driver\Command;
+use MongoDB\Model\BSONDocument;
 
 class Client implements DatabaseClient
 {
@@ -27,10 +28,13 @@ class Client implements DatabaseClient
 
     public function getByQuery(string $collectionName, array $query) : array
     {
-        return $this->nativeClient
+        $documents = $this->nativeClient
             ->selectCollection($this->databaseName, $collectionName)
-            ->find($query)
-            ->toArray();
+            ->find($query);
+
+        return array_map(function (BSONDocument $document) {
+            return $document->getArrayCopy();
+        }, $documents->toArray());
     }
 
     public function upsert(string $collectionName, array $query, array $document) : void
