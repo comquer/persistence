@@ -9,6 +9,4 @@ interface DatabaseClient
     public function getByQuery(string $collectionName, array $query) : array;
 
     public function upsert(string $collectionName, array $query, array $document) : void;
-
-//    public function getByQuery(string $collectionName, array $query) : array;
 }
