@@ -15,7 +15,7 @@ class Publisher implements QueuePublisher
         $this->connection = $connection;
     }
 
-    public function __invoke(string $queueName, array $message): void
+    public function __invoke(string $queueName, array $message) : void
     {
         $channel = $this->connection->channel();
         $channel->queue_declare($queueName, false, false, false, false);

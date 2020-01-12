@@ -15,7 +15,7 @@ class Consumer implements QueueConsumer
         $this->connection = $connection;
     }
 
-    public function __invoke(string $queueName, callable $callback): void
+    public function __invoke(string $queueName, callable $callback) : void
     {
         $channel = $this->connection->channel();
         $channel->queue_declare($queueName, false, false, false, false);
