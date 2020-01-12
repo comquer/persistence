@@ -20,7 +20,9 @@
     },
     "require": {
         "mongodb/mongodb": "^1.5",
-        "ext-mongodb": "*"
+        "ext-mongodb": "*",
+        "php-amqplib/php-amqplib": "^2.11",
+        "ext-json": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "8.0"
